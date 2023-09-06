@@ -7,15 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A450F05C2AA8658A0018DB9D /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A450F05B2AA8658A0018DB9D /* IntroViewController.swift */; };
+		A4BA26332AA88CBA007D0005 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA26322AA88CBA007D0005 /* LoginViewController.swift */; };
+		A4BA26362AA88FB2007D0005 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A4BA26352AA88FB2007D0005 /* Lottie */; };
+		A4BA263D2AA89097007D0005 /* image1.1.json in Resources */ = {isa = PBXBuildFile; fileRef = A4BA26392AA89097007D0005 /* image1.1.json */; };
+		A4BA263E2AA89097007D0005 /* image1.2.json in Resources */ = {isa = PBXBuildFile; fileRef = A4BA263A2AA89097007D0005 /* image1.2.json */; };
+		A4BA263F2AA89097007D0005 /* image1.3.json in Resources */ = {isa = PBXBuildFile; fileRef = A4BA263B2AA89097007D0005 /* image1.3.json */; };
+		A4BA26402AA89097007D0005 /* image1.3.1.json in Resources */ = {isa = PBXBuildFile; fileRef = A4BA263C2AA89097007D0005 /* image1.3.1.json */; };
+		A4BA26422AA8A151007D0005 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA26412AA8A151007D0005 /* RegisterViewController.swift */; };
+		A4BA26442AA8A94E007D0005 /* ForgotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA26432AA8A94E007D0005 /* ForgotViewController.swift */; };
 		A4C453D62AA753F0002A34C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C453D52AA753F0002A34C6 /* AppDelegate.swift */; };
 		A4C453D82AA753F0002A34C6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C453D72AA753F0002A34C6 /* SceneDelegate.swift */; };
 		A4C453DA2AA753F0002A34C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C453D92AA753F0002A34C6 /* ViewController.swift */; };
 		A4C453DD2AA753F0002A34C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4C453DB2AA753F0002A34C6 /* Main.storyboard */; };
 		A4C453DF2AA753F1002A34C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4C453DE2AA753F1002A34C6 /* Assets.xcassets */; };
 		A4C453E22AA753F1002A34C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4C453E02AA753F1002A34C6 /* LaunchScreen.storyboard */; };
+		A4C453F12AA754E0002A34C6 /* Core .swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C453F02AA754E0002A34C6 /* Core .swift */; };
+		A4C453F32AA75962002A34C6 /* PageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C453F22AA75962002A34C6 /* PageModel.swift */; };
+		A4C453F52AA75EE6002A34C6 /* PagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C453F42AA75EE6002A34C6 /* PagesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A450F05B2AA8658A0018DB9D /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
+		A4BA26322AA88CBA007D0005 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A4BA26392AA89097007D0005 /* image1.1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = image1.1.json; sourceTree = "<group>"; };
+		A4BA263A2AA89097007D0005 /* image1.2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = image1.2.json; sourceTree = "<group>"; };
+		A4BA263B2AA89097007D0005 /* image1.3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = image1.3.json; sourceTree = "<group>"; };
+		A4BA263C2AA89097007D0005 /* image1.3.1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = image1.3.1.json; sourceTree = "<group>"; };
+		A4BA26412AA8A151007D0005 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		A4BA26432AA8A94E007D0005 /* ForgotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotViewController.swift; sourceTree = "<group>"; };
 		A4C453D22AA753F0002A34C6 /* MessageApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MessageApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4C453D52AA753F0002A34C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4C453D72AA753F0002A34C6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +44,9 @@
 		A4C453DE2AA753F1002A34C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A4C453E12AA753F1002A34C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A4C453E32AA753F1002A34C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A4C453F02AA754E0002A34C6 /* Core .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core .swift"; sourceTree = "<group>"; };
+		A4C453F22AA75962002A34C6 /* PageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageModel.swift; sourceTree = "<group>"; };
+		A4C453F42AA75EE6002A34C6 /* PagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4BA26362AA88FB2007D0005 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +80,82 @@
 		A4C453D42AA753F0002A34C6 /* MessageApp */ = {
 			isa = PBXGroup;
 			children = (
-				A4C453D52AA753F0002A34C6 /* AppDelegate.swift */,
-				A4C453D72AA753F0002A34C6 /* SceneDelegate.swift */,
-				A4C453D92AA753F0002A34C6 /* ViewController.swift */,
-				A4C453DB2AA753F0002A34C6 /* Main.storyboard */,
-				A4C453DE2AA753F1002A34C6 /* Assets.xcassets */,
-				A4C453E02AA753F1002A34C6 /* LaunchScreen.storyboard */,
+				A4C453ED2AA75413002A34C6 /* Resources */,
+				A4C453EC2AA7540F002A34C6 /* Model */,
+				A4C453EB2AA75409002A34C6 /* View */,
+				A4C453EA2AA75402002A34C6 /* ViewModel */,
+				A4C453E92AA753FC002A34C6 /* Helpers */,
 				A4C453E32AA753F1002A34C6 /* Info.plist */,
+				A4BA26392AA89097007D0005 /* image1.1.json */,
+				A4BA263A2AA89097007D0005 /* image1.2.json */,
+				A4BA263C2AA89097007D0005 /* image1.3.1.json */,
+				A4BA263B2AA89097007D0005 /* image1.3.json */,
 			);
 			path = MessageApp;
+			sourceTree = "<group>";
+		};
+		A4C453E92AA753FC002A34C6 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A4C453F02AA754E0002A34C6 /* Core .swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		A4C453EA2AA75402002A34C6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A4C453EB2AA75409002A34C6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A4C453EE2AA75420002A34C6 /* Controllers */,
+				A4C453EF2AA7542E002A34C6 /* Storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A4C453EC2AA7540F002A34C6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A4C453F22AA75962002A34C6 /* PageModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A4C453ED2AA75413002A34C6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A4C453D52AA753F0002A34C6 /* AppDelegate.swift */,
+				A4C453D72AA753F0002A34C6 /* SceneDelegate.swift */,
+				A4C453DE2AA753F1002A34C6 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A4C453EE2AA75420002A34C6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A4C453D92AA753F0002A34C6 /* ViewController.swift */,
+				A4C453F42AA75EE6002A34C6 /* PagesViewController.swift */,
+				A450F05B2AA8658A0018DB9D /* IntroViewController.swift */,
+				A4BA26322AA88CBA007D0005 /* LoginViewController.swift */,
+				A4BA26412AA8A151007D0005 /* RegisterViewController.swift */,
+				A4BA26432AA8A94E007D0005 /* ForgotViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A4C453EF2AA7542E002A34C6 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				A4C453E02AA753F1002A34C6 /* LaunchScreen.storyboard */,
+				A4C453DB2AA753F0002A34C6 /* Main.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +174,9 @@
 			dependencies = (
 			);
 			name = MessageApp;
+			packageProductDependencies = (
+				A4BA26352AA88FB2007D0005 /* Lottie */,
+			);
 			productName = MessageApp;
 			productReference = A4C453D22AA753F0002A34C6 /* MessageApp.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +205,9 @@
 				Base,
 			);
 			mainGroup = A4C453C92AA753F0002A34C6;
+			packageReferences = (
+				A4BA26342AA88FB2007D0005 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = A4C453D32AA753F0002A34C6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -125,9 +222,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4BA263D2AA89097007D0005 /* image1.1.json in Resources */,
 				A4C453E22AA753F1002A34C6 /* LaunchScreen.storyboard in Resources */,
 				A4C453DF2AA753F1002A34C6 /* Assets.xcassets in Resources */,
 				A4C453DD2AA753F0002A34C6 /* Main.storyboard in Resources */,
+				A4BA26402AA89097007D0005 /* image1.3.1.json in Resources */,
+				A4BA263F2AA89097007D0005 /* image1.3.json in Resources */,
+				A4BA263E2AA89097007D0005 /* image1.2.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,9 +239,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4BA26422AA8A151007D0005 /* RegisterViewController.swift in Sources */,
 				A4C453DA2AA753F0002A34C6 /* ViewController.swift in Sources */,
+				A4C453F32AA75962002A34C6 /* PageModel.swift in Sources */,
+				A4BA26442AA8A94E007D0005 /* ForgotViewController.swift in Sources */,
+				A450F05C2AA8658A0018DB9D /* IntroViewController.swift in Sources */,
 				A4C453D62AA753F0002A34C6 /* AppDelegate.swift in Sources */,
+				A4BA26332AA88CBA007D0005 /* LoginViewController.swift in Sources */,
+				A4C453F52AA75EE6002A34C6 /* PagesViewController.swift in Sources */,
 				A4C453D82AA753F0002A34C6 /* SceneDelegate.swift in Sources */,
+				A4C453F12AA754E0002A34C6 /* Core .swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +466,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A4BA26342AA88FB2007D0005 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A4BA26352AA88FB2007D0005 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A4BA26342AA88FB2007D0005 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A4C453CA2AA753F0002A34C6 /* Project object */;
 }
