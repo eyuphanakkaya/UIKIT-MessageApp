@@ -6,15 +6,17 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController {
 
+    var alert = Alerts()
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+      
     }
 
     @IBAction func signUpClicked(_ sender: Any) {
@@ -27,9 +29,28 @@ class LoginViewController: UIViewController {
     }
     @IBAction func facebookClicked(_ sender: Any) {
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toMainVC" {
+            let index = sender as? String
+            let toDestination = segue.destination as? PersonsViewController
+            toDestination?.loggedInUserId = index
+        }
+    }
     @IBAction func loginClicked(_ sender: Any) {
- 
-           
+        guard let email = emailTextField.text ,
+              let password = passwordTextField.text else{
+            alert.alert(title: "Error", message: "Please valid value enter.", viewControllers: self)
+            return
+        }
+        Auth.auth().signIn(withEmail: email, password: password) {[self] result, error in
+            if  error != nil {
+                alert.alert(title: "Error", message: "Please valid value enter.", viewControllers: self)
+            } else if let email = result?.user.email {
+                performSegue(withIdentifier: "toMainVC", sender: email)
+            }
+            
+        }
+        
     }
     @IBAction func forgotClicked(_ sender: Any) {
         if let forgot = storyboard?.instantiateViewController(withIdentifier: "ForgotVC") {

@@ -13,11 +13,19 @@ extension PersonsViewController: UITableViewDelegate,UITableViewDataSource {
         1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        myUsers.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let user = myUsers[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "personCell", for: indexPath) as! PersonsTableViewCell
+        cell.userNameLabel.text = user.name
+        cell.userPhoneLabel.text = user.email
+        cell.imageViews.image = UIImage(named: "person")
         tableView.rowHeight = 90
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "toChatVC", sender: indexPath.row)
     }
 }

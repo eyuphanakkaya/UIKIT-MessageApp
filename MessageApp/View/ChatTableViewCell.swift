@@ -1,22 +1,18 @@
 //
-//  PersonsTableViewCell.swift
+//  ChatTableViewCell.swift
 //  MessageApp
 //
-//  Created by Eyüphan Akkaya on 6.09.2023.
+//  Created by Eyüphan Akkaya on 7.09.2023.
 //
 
 import UIKit
 
-class PersonsTableViewCell: UITableViewCell {
-    var person: Users?
+class ChatTableViewCell: UITableViewCell {
+
+    @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var imageViews: UIImageView!
-    var storyboard = UIStoryboard()
-    @IBOutlet weak var userPhoneLabel: UILabel!
-    @IBOutlet weak var userNameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-
         // Initialization code
     }
 
@@ -25,7 +21,5 @@ class PersonsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    @IBAction func toMessageClicked(_ sender: Any) {
-        print("Selam")
-    }
+
 }
