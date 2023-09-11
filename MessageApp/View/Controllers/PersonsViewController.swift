@@ -9,8 +9,10 @@ import UIKit
 import Firebase
 
 class PersonsViewController: UIViewController {
-
+    var searchText = ""
+    var searchActive = false
     var loggedInUserId: String?
+    var filterUser = [Users]()
     var myUsers = [Users]()
     var ref: DatabaseReference?
     @IBOutlet weak var searchBar: UISearchBar!
@@ -19,10 +21,9 @@ class PersonsViewController: UIViewController {
         super.viewDidLoad()
 
         ref = Database.database().reference()
-        
-        print(loggedInUserId)
         tableView.dataSource = self
         tableView.delegate = self
+        searchBar.delegate = self
         persons()
         // Do any additional setup after loading the view.
     }

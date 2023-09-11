@@ -8,15 +8,20 @@
 import Foundation
 import UIKit
 
-extension PersonsViewController: UITableViewDelegate,UITableViewDataSource {
+extension PersonsViewController: UITableViewDelegate,UITableViewDataSource, UISearchBarDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        myUsers.count
+        if searchActive {
+            return  myUsers.count
+        } else {
+            return  filterUser.count
+        }
+        
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let user = myUsers[indexPath.row]
+        let user = searchActive == true ? myUsers[indexPath.row] : filterUser[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "personCell", for: indexPath) as! PersonsTableViewCell
         cell.userNameLabel.text = user.name
         cell.userPhoneLabel.text = user.email
@@ -26,6 +31,20 @@ extension PersonsViewController: UITableViewDelegate,UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: "toChatVC", sender: indexPath.row)
+        let user = myUsers[indexPath.row]
+        let vc = ChatViewController()
+        vc.title = "Chat"
+        vc.person = user
+        vc.senderUser = loggedInUserId
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchActive = true
+        if let search = searchBar.text {
+            filterUser = myUsers.filter({$0.name.contains(search)})
+            tableView.reloadData()
+        }
     }
 }

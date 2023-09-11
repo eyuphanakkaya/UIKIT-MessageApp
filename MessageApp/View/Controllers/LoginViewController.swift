@@ -31,11 +31,18 @@ class LoginViewController: UIViewController {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toMainVC" {
-            let index = sender as? String
-            let toDestination = segue.destination as? PersonsViewController
-            toDestination?.loggedInUserId = index
+            if let tabBarController = segue.destination as? UITabBarController {
+                if let navigationController = tabBarController.viewControllers?.first as? UINavigationController {
+                    let index = sender as? String
+                    if let mainViewController = navigationController.viewControllers.first as? PersonsViewController {
+                        mainViewController.loggedInUserId = index
+                    }
+                }
+            }
         }
     }
+
+
     @IBAction func loginClicked(_ sender: Any) {
         guard let email = emailTextField.text ,
               let password = passwordTextField.text else{

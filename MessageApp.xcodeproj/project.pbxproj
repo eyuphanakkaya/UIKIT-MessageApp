@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A40077922AAF0BE200B6FBCF /* ChatsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40077912AAF0BE200B6FBCF /* ChatsExtension.swift */; };
+		A42C11CA2AAB0D59002E54BC /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C11C92AAB0D59002E54BC /* Messages.swift */; };
 		A450F05C2AA8658A0018DB9D /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A450F05B2AA8658A0018DB9D /* IntroViewController.swift */; };
 		A488D1912AA8B46400E69AF0 /* PersonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488D1902AA8B46400E69AF0 /* PersonsViewController.swift */; };
 		A488D1932AA8B4BA00E69AF0 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488D1922AA8B4BA00E69AF0 /* MessageViewController.swift */; };
@@ -43,11 +45,12 @@
 		A4EAFC0B2AA9CC4D00CA6B00 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EAFC0A2AA9CC4D00CA6B00 /* Alerts.swift */; };
 		A4EAFC0D2AA9D14200CA6B00 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EAFC0C2AA9D14200CA6B00 /* MessageViewModel.swift */; };
 		A4EAFC0F2AA9E68D00CA6B00 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EAFC0E2AA9E68D00CA6B00 /* ChatViewController.swift */; };
-		A4EAFC122AA9E7C900CA6B00 /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = A4EAFC112AA9E7C900CA6B00 /* MessageKit */; };
-		A4EAFC162AAA0AD600CA6B00 /* DenemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EAFC152AAA0AD600CA6B00 /* DenemeViewController.swift */; };
+		A4F728B22AAB430B008A279F /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = A4F728B12AAB430B008A279F /* MessageKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A40077912AAF0BE200B6FBCF /* ChatsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsExtension.swift; sourceTree = "<group>"; };
+		A42C11C92AAB0D59002E54BC /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		A450F05B2AA8658A0018DB9D /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		A488D1902AA8B46400E69AF0 /* PersonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsViewController.swift; sourceTree = "<group>"; };
 		A488D1922AA8B4BA00E69AF0 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
@@ -80,7 +83,6 @@
 		A4EAFC0A2AA9CC4D00CA6B00 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		A4EAFC0C2AA9D14200CA6B00 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		A4EAFC0E2AA9E68D00CA6B00 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		A4EAFC152AAA0AD600CA6B00 /* DenemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DenemeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +93,7 @@
 				A493BEEC2AA9B654007D3E63 /* FirebaseAnalytics in Frameworks */,
 				A493BEEE2AA9B654007D3E63 /* FirebaseAuth in Frameworks */,
 				A493BEF02AA9B654007D3E63 /* FirebaseDatabase in Frameworks */,
-				A4EAFC122AA9E7C900CA6B00 /* MessageKit in Frameworks */,
+				A4F728B22AAB430B008A279F /* MessageKit in Frameworks */,
 				A493BEF22AA9B654007D3E63 /* FirebaseFirestore in Frameworks */,
 				A4BA26362AA88FB2007D0005 /* Lottie in Frameworks */,
 				A493BEF42AA9B654007D3E63 /* FirebaseStorage in Frameworks */,
@@ -118,6 +120,7 @@
 				A488D19A2AA8B72D00E69AF0 /* MessageExtension.swift */,
 				A488D19C2AA8B77200E69AF0 /* PersonExtension.swift */,
 				A493BEFB2AA9BD9B007D3E63 /* ChatExtension.swift */,
+				A40077912AAF0BE200B6FBCF /* ChatsExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 			children = (
 				A4C453F22AA75962002A34C6 /* PageModel.swift */,
 				A4EAFC072AA9C64400CA6B00 /* Users.swift */,
+				A42C11C92AAB0D59002E54BC /* Messages.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -214,7 +218,6 @@
 				A488D1922AA8B4BA00E69AF0 /* MessageViewController.swift */,
 				A493BEF52AA9B92F007D3E63 /* ChatsViewController.swift */,
 				A4EAFC0E2AA9E68D00CA6B00 /* ChatViewController.swift */,
-				A4EAFC152AAA0AD600CA6B00 /* DenemeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -259,7 +262,7 @@
 				A493BEEF2AA9B654007D3E63 /* FirebaseDatabase */,
 				A493BEF12AA9B654007D3E63 /* FirebaseFirestore */,
 				A493BEF32AA9B654007D3E63 /* FirebaseStorage */,
-				A4EAFC112AA9E7C900CA6B00 /* MessageKit */,
+				A4F728B12AAB430B008A279F /* MessageKit */,
 			);
 			productName = MessageApp;
 			productReference = A4C453D22AA753F0002A34C6 /* MessageApp.app */;
@@ -292,7 +295,7 @@
 			packageReferences = (
 				A4BA26342AA88FB2007D0005 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				A493BEEA2AA9B654007D3E63 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				A4EAFC102AA9E7C900CA6B00 /* XCRemoteSwiftPackageReference "MessageKit" */,
+				A4F728B02AAB430B008A279F /* XCRemoteSwiftPackageReference "MessageKit" */,
 			);
 			productRefGroup = A4C453D32AA753F0002A34C6 /* Products */;
 			projectDirPath = "";
@@ -327,9 +330,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4BA26422AA8A151007D0005 /* RegisterViewController.swift in Sources */,
+				A42C11CA2AAB0D59002E54BC /* Messages.swift in Sources */,
+				A40077922AAF0BE200B6FBCF /* ChatsExtension.swift in Sources */,
 				A4C453F32AA75962002A34C6 /* PageModel.swift in Sources */,
 				A4EAFC0F2AA9E68D00CA6B00 /* ChatViewController.swift in Sources */,
-				A4EAFC162AAA0AD600CA6B00 /* DenemeViewController.swift in Sources */,
 				A4BA26442AA8A94E007D0005 /* ForgotViewController.swift in Sources */,
 				A493BEFC2AA9BD9B007D3E63 /* ChatExtension.swift in Sources */,
 				A4EAFC0D2AA9D14200CA6B00 /* MessageViewModel.swift in Sources */,
@@ -584,12 +588,12 @@
 				kind = branch;
 			};
 		};
-		A4EAFC102AA9E7C900CA6B00 /* XCRemoteSwiftPackageReference "MessageKit" */ = {
+		A4F728B02AAB430B008A279F /* XCRemoteSwiftPackageReference "MessageKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/MessageKit/MessageKit.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
+				kind = exactVersion;
+				version = 3.5.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -625,9 +629,9 @@
 			package = A4BA26342AA88FB2007D0005 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
 		};
-		A4EAFC112AA9E7C900CA6B00 /* MessageKit */ = {
+		A4F728B12AAB430B008A279F /* MessageKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A4EAFC102AA9E7C900CA6B00 /* XCRemoteSwiftPackageReference "MessageKit" */;
+			package = A4F728B02AAB430B008A279F /* XCRemoteSwiftPackageReference "MessageKit" */;
 			productName = MessageKit;
 		};
 /* End XCSwiftPackageProductDependency section */
