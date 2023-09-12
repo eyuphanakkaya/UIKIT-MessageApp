@@ -54,6 +54,8 @@ class LoginViewController: UIViewController {
                 alert.alert(title: "Error", message: "Please valid value enter.", viewControllers: self)
             } else if let email = result?.user.email {
                 performSegue(withIdentifier: "toMainVC", sender: email)
+                let userDefaults = UserDefaults.standard
+                userDefaults.set(true, forKey: "isLoggedIn")
             }
             
         }

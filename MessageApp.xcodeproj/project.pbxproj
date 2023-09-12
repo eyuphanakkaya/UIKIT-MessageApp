@@ -25,6 +25,7 @@
 		A493BEF62AA9B92F007D3E63 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A493BEF52AA9B92F007D3E63 /* ChatsViewController.swift */; };
 		A493BEFA2AA9BC22007D3E63 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A493BEF92AA9BC22007D3E63 /* ChatTableViewCell.swift */; };
 		A493BEFC2AA9BD9B007D3E63 /* ChatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A493BEFB2AA9BD9B007D3E63 /* ChatExtension.swift */; };
+		A4956E2A2AB0A03E00995E86 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4956E292AB0A03E00995E86 /* SettingsViewController.swift */; };
 		A4BA26332AA88CBA007D0005 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA26322AA88CBA007D0005 /* LoginViewController.swift */; };
 		A4BA26362AA88FB2007D0005 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A4BA26352AA88FB2007D0005 /* Lottie */; };
 		A4BA263D2AA89097007D0005 /* image1.1.json in Resources */ = {isa = PBXBuildFile; fileRef = A4BA26392AA89097007D0005 /* image1.1.json */; };
@@ -62,6 +63,7 @@
 		A493BEF52AA9B92F007D3E63 /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		A493BEF92AA9BC22007D3E63 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		A493BEFB2AA9BD9B007D3E63 /* ChatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatExtension.swift; sourceTree = "<group>"; };
+		A4956E292AB0A03E00995E86 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A4BA26322AA88CBA007D0005 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A4BA26392AA89097007D0005 /* image1.1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = image1.1.json; sourceTree = "<group>"; };
 		A4BA263A2AA89097007D0005 /* image1.2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = image1.2.json; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				A488D1922AA8B4BA00E69AF0 /* MessageViewController.swift */,
 				A493BEF52AA9B92F007D3E63 /* ChatsViewController.swift */,
 				A4EAFC0E2AA9E68D00CA6B00 /* ChatViewController.swift */,
+				A4956E292AB0A03E00995E86 /* SettingsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				A4BA26442AA8A94E007D0005 /* ForgotViewController.swift in Sources */,
 				A493BEFC2AA9BD9B007D3E63 /* ChatExtension.swift in Sources */,
 				A4EAFC0D2AA9D14200CA6B00 /* MessageViewModel.swift in Sources */,
+				A4956E2A2AB0A03E00995E86 /* SettingsViewController.swift in Sources */,
 				A488D1972AA8B4E200E69AF0 /* PersonsTableViewCell.swift in Sources */,
 				A4EAFC082AA9C64400CA6B00 /* Users.swift in Sources */,
 				A4EAFC0B2AA9CC4D00CA6B00 /* Alerts.swift in Sources */,

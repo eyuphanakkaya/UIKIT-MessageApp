@@ -304,6 +304,7 @@
                     <connections>
                         <segue destination="oLW-U2-67P" kind="relationship" relationship="viewControllers" id="Vdw-dV-ORd"/>
                         <segue destination="tZH-bN-kIe" kind="relationship" relationship="viewControllers" id="ote-bO-8oe"/>
+                        <segue destination="Ava-vo-Zzy" kind="relationship" relationship="viewControllers" id="u85-jn-sGG"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YXs-dm-oaK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -869,6 +870,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DQU-2C-Lp0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2510.6870229007632" y="2598.5915492957747"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="PSd-XB-KTR">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="Ava-vo-Zzy" customClass="SettingsViewController" customModule="MessageApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9T2-3o-6So">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FD5-Wh-1e7">
+                                <rect key="frame" x="150" y="330" width="93" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Çıkış yap"/>
+                                <connections>
+                                    <action selector="logOutClicked:" destination="Ava-vo-Zzy" eventType="touchUpInside" id="8kI-bf-jfo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="U5e-Rz-9Sd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="4XW-h2-Nfc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Na5-Dx-3Bq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2511" y="3332"/>
         </scene>
     </scenes>
     <resources>
