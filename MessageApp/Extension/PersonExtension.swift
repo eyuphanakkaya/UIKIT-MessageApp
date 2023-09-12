@@ -14,10 +14,11 @@ extension PersonsViewController: UITableViewDelegate,UITableViewDataSource, UISe
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchActive {
-            return  myUsers.count
+            return myUsers.count
         } else {
-            return  filterUser.count
+            return filterUser.count
         }
+        
         
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -31,7 +32,7 @@ extension PersonsViewController: UITableViewDelegate,UITableViewDataSource, UISe
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let user = myUsers[indexPath.row]
+        let user = searchActive == true ? myUsers[indexPath.row] : filterUser[indexPath.row]
         let vc = ChatViewController()
         vc.title = "Chat"
         vc.person = user
@@ -39,12 +40,23 @@ extension PersonsViewController: UITableViewDelegate,UITableViewDataSource, UISe
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
-
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = false
+        
+    }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchActive = true
         if let search = searchBar.text {
-            filterUser = myUsers.filter({$0.name.contains(search)})
+            filterUser = myUsers.filter{ users in
+                if !search.isEmpty {
+                    let searchTextMatch = users.name?.lowercased().contains(search.lowercased())
+                    return searchTextMatch ?? false
+                } else {
+                    return true
+                }
+            }
             tableView.reloadData()
+
         }
+       
     }
 }

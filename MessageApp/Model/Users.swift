@@ -9,9 +9,13 @@ import Foundation
 
 struct Users: Identifiable {
     let id = UUID()
-    let image: String
-    let name: String
-    let lastName: String
-    let email: String
-    let password: String
+    let image: String?
+    let name: String?
+    let lastName: String?
+    let email: String?
+    let password: String?
+    let sender: String?
+    let receiver: String?
+    let message: String?
+    let time: Double?
 }

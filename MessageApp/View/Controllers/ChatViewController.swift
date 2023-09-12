@@ -15,8 +15,7 @@ class ChatViewController: MessagesViewController {
     var senderUser: String?
     var ref: DatabaseReference?
     var person: Users?
-    var message: MyMessage?
-    var messageList = [MyMessage]()
+    var messageList = [Users]()
     let currentUser = Sender(senderId: "self", displayName: "eyp")
     let otherUser = Sender(senderId: "user", displayName: "eyp1")
     var messages = [MessageType]()
@@ -51,8 +50,8 @@ class ChatViewController: MessagesViewController {
                        sender: sender == senderUsers ? self.currentUser : self.otherUser,
                        kind: .text(messageText)
                    )
-
                    self.messages.append(message)
+                
                    
                    // Gelen her mesajı görüntülemeyi güncelleyin
                    self.messagesCollectionView.reloadData()

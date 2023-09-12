@@ -10,9 +10,10 @@ import Firebase
 
 class PersonsViewController: UIViewController {
     var searchText = ""
-    var searchActive = false
+    var searchActive = true
     var loggedInUserId: String?
     var filterUser = [Users]()
+    var mySortArray = [Users]()
     var myUsers = [Users]()
     var ref: DatabaseReference?
     @IBOutlet weak var searchBar: UISearchBar!
@@ -24,16 +25,17 @@ class PersonsViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         searchBar.delegate = self
+        myUsers.sort(by: { $0.email ?? "" < $1.email ?? "" })
         persons()
-        // Do any additional setup after loading the view.
+       
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toChatVC" {
-            let index = sender as? Int
-            let toDestionation = segue.destination as? ChatsViewController
-            toDestionation?.user = myUsers[index!]
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "toChatVC" {
+//            let index =  as? Int
+//            let toDestionation = segue.destination as? ChatsViewController
+//            toDestionation?.user = myUsers[index!]
+//        }
+//    }
     
     func persons() {
         ref?.child("Users").observe(.value, with: { snapshot in
@@ -48,8 +50,11 @@ class PersonsViewController: UIViewController {
                               let password = sozluk["password"] as? String else{
                                   return
                               }
-                        let myUsersItem = Users(image: image, name: name, lastName: lastName, email: email, password: password)
+                        let myUsersItem = Users(image: "", name: name, lastName: lastName, email: email, password: password, sender: "", receiver: "", message: "", time: 0)
+                        
                         self.myUsers.append(myUsersItem)
+                           
+                        
                         
                     }
                 }

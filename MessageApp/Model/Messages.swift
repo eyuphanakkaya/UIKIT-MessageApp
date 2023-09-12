@@ -19,9 +19,4 @@ struct Message: MessageType {
     var sender: SenderType
     var kind: MessageKind
 }
-struct MyMessage: Identifiable {
-    let id = UUID()
-    let sender: String
-    let receiver: String
-    let message: String
-}
+
