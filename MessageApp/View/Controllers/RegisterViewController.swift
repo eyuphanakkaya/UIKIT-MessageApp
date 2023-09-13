@@ -18,6 +18,15 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var firstNameTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        emailTextField.leftViewMode = .always
+        passwordTextField.leftViewMode = .always
+        lastNameTextField.leftViewMode = .always
+        firstNameTextField.leftViewMode = .always
+        
+        emailTextField.leftView = UIImageView(image: UIImage(systemName: "envelope"))
+        passwordTextField.leftView = UIImageView(image: UIImage(systemName: "key"))
+        lastNameTextField.leftView = UIImageView(image: UIImage(systemName: "person.2"))
+        firstNameTextField.leftView = UIImageView(image: UIImage(systemName: "person"))
         
         ref = Database.database().reference()
         // Do any additional setup after loading the view.

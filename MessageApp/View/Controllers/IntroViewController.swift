@@ -53,14 +53,14 @@ class IntroViewController: UIViewController {
     }
     
     @IBAction func loginPageClicked(_ sender: Any) {
-        if let login = storyboard?.instantiateViewController(withIdentifier: "LoginVC") {
+        if let login = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") {
             login.modalPresentationStyle = .fullScreen
             present(login, animated: true)
         }
     }
     
     @IBAction func skipClicked(_ sender: Any) {
-        if let login = storyboard?.instantiateViewController(withIdentifier: "LoginVC") {
+        if let login = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") {
             login.modalPresentationStyle =  .fullScreen
             present(login, animated: true)
         }

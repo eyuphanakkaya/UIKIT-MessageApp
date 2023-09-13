@@ -24,9 +24,11 @@ extension MessageViewController: UITableViewDelegate,UITableViewDataSource,UISea
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let message = searchActive == true ? messageList[indexPath.row] : searchList[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! MessageTableViewCell
-        cell.usersNameLabel.text = message.receiver
+        cell.usersNameLabel.text = message.sender == loggedInUserId ? message.receiver : message.sender
         cell.shortMessageLabel.text = message.message
-        cell.imageViews.image = UIImage(named: "person")
+        cell.imageViews.image = UIImage(named: "persons")
+        cell.imageViews.layer.cornerRadius = 25
+        
         tableView.rowHeight = 90
         return cell
     }

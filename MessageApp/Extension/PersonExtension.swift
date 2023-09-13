@@ -26,7 +26,8 @@ extension PersonsViewController: UITableViewDelegate,UITableViewDataSource, UISe
         let cell = tableView.dequeueReusableCell(withIdentifier: "personCell", for: indexPath) as! PersonsTableViewCell
         cell.userNameLabel.text = user.name
         cell.userPhoneLabel.text = user.email
-        cell.imageViews.image = UIImage(named: "person")
+        cell.imageViews.image = UIImage(named:"persons")
+        cell.imageViews.layer.cornerRadius = 25
         tableView.rowHeight = 90
         return cell
     }

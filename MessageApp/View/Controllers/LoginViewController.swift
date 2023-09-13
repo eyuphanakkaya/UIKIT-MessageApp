@@ -15,8 +15,11 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-      
+        emailTextField.leftViewMode = .always
+        emailTextField.leftView = UIImageView(image: UIImage(systemName: "envelope"))
+        passwordTextField.leftViewMode = .always
+        passwordTextField.leftView = UIImageView(image: UIImage(systemName: "key"))
+        
     }
 
     @IBAction func signUpClicked(_ sender: Any) {
@@ -49,22 +52,27 @@ class LoginViewController: UIViewController {
             alert.alert(title: "Error", message: "Please valid value enter.", viewControllers: self)
             return
         }
-        Auth.auth().signIn(withEmail: email, password: password) {[self] result, error in
-            if  error != nil {
-                alert.alert(title: "Error", message: "Please valid value enter.", viewControllers: self)
-            } else if let email = result?.user.email {
-                performSegue(withIdentifier: "toMainVC", sender: email)
-                let userDefaults = UserDefaults.standard
-                userDefaults.set(true, forKey: "isLoggedIn")
-            }
-            
-        }
+        getLogin(email: email, password: password)
         
     }
     @IBAction func forgotClicked(_ sender: Any) {
         if let forgot = storyboard?.instantiateViewController(withIdentifier: "ForgotVC") {
             forgot.modalPresentationStyle = .fullScreen
             present(forgot, animated: true)
+        }
+    }
+    func getLogin(email: String, password: String) {
+        Auth.auth().signIn(withEmail: email, password: password) {[self] result, error in
+            if  error != nil {
+                alert.alert(title: "Error", message: "Please valid value enter.", viewControllers: self)
+            } else if let email = result?.user.email {
+                UserDefaults.standard.set(true, forKey: "isLoggedIn")
+                UserDefaults.standard.synchronize()
+                performSegue(withIdentifier: "toMainVC", sender: email)
+
+               
+            }
+            
         }
     }
 }

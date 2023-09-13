@@ -12,7 +12,8 @@ class ForgotViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        emailTextField.leftViewMode = .always
+        emailTextField.leftView = UIImageView(image: UIImage(systemName: "envelope"))
 
     }
 

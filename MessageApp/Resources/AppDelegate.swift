@@ -16,17 +16,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
-        let userDefaults = UserDefaults.standard
-        let isLoggedIn = userDefaults.bool(forKey: "isLoggedIn")
-        if isLoggedIn {
-            let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-            let mainViewController = mainStoryBoard.instantiateViewController(withIdentifier: "mainVC") as? UITabBarController
-            window?.rootViewController = mainViewController
-        } else {
-            let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-            let loginViewController = mainStoryBoard.instantiateViewController(withIdentifier: "LoginVC") as? LoginViewController
-            window?.rootViewController = loginViewController
-        }
+//        let userDefaults = UserDefaults.standard
+//         let isLoggedIn = userDefaults.bool(forKey: "isLoggedIn")
+//         
+//         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//         
+//         if isLoggedIn {
+//             let mainViewController = mainStoryboard.instantiateViewController(withIdentifier: "mainVC") as? UITabBarController
+//             window?.rootViewController = mainViewController
+//         } else {
+//             let loginViewController = mainStoryboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
+//             window?.rootViewController = loginViewController
+//         }
         return true
     }
 

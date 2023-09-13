@@ -39,7 +39,6 @@
 		A4C453DD2AA753F0002A34C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4C453DB2AA753F0002A34C6 /* Main.storyboard */; };
 		A4C453DF2AA753F1002A34C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4C453DE2AA753F1002A34C6 /* Assets.xcassets */; };
 		A4C453E22AA753F1002A34C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4C453E02AA753F1002A34C6 /* LaunchScreen.storyboard */; };
-		A4C453F12AA754E0002A34C6 /* Core .swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C453F02AA754E0002A34C6 /* Core .swift */; };
 		A4C453F32AA75962002A34C6 /* PageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C453F22AA75962002A34C6 /* PageModel.swift */; };
 		A4C453F52AA75EE6002A34C6 /* PagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C453F42AA75EE6002A34C6 /* PagesViewController.swift */; };
 		A4EAFC082AA9C64400CA6B00 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EAFC072AA9C64400CA6B00 /* Users.swift */; };
@@ -78,7 +77,6 @@
 		A4C453DE2AA753F1002A34C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A4C453E12AA753F1002A34C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A4C453E32AA753F1002A34C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A4C453F02AA754E0002A34C6 /* Core .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core .swift"; sourceTree = "<group>"; };
 		A4C453F22AA75962002A34C6 /* PageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageModel.swift; sourceTree = "<group>"; };
 		A4C453F42AA75EE6002A34C6 /* PagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesViewController.swift; sourceTree = "<group>"; };
 		A4EAFC072AA9C64400CA6B00 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
@@ -127,6 +125,16 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		A49CE3E82AB1AFD300128318 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A493BEF92AA9BC22007D3E63 /* ChatTableViewCell.swift */,
+				A488D1962AA8B4E200E69AF0 /* PersonsTableViewCell.swift */,
+				A488D1942AA8B4D500E69AF0 /* MessageTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		A4C453C92AA753F0002A34C6 = {
 			isa = PBXGroup;
 			children = (
@@ -163,7 +171,6 @@
 			children = (
 				A4EAFC092AA9CC3D00CA6B00 /* Alerts */,
 				A488D1982AA8B69D00E69AF0 /* Lotties */,
-				A4C453F02AA754E0002A34C6 /* Core .swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -179,11 +186,9 @@
 		A4C453EB2AA75409002A34C6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A49CE3E82AB1AFD300128318 /* Cells */,
 				A4C453EE2AA75420002A34C6 /* Controllers */,
 				A4C453EF2AA7542E002A34C6 /* Storyboard */,
-				A488D1942AA8B4D500E69AF0 /* MessageTableViewCell.swift */,
-				A488D1962AA8B4E200E69AF0 /* PersonsTableViewCell.swift */,
-				A493BEF92AA9BC22007D3E63 /* ChatTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -356,7 +361,6 @@
 				A4C453F52AA75EE6002A34C6 /* PagesViewController.swift in Sources */,
 				A488D19D2AA8B77200E69AF0 /* PersonExtension.swift in Sources */,
 				A4C453D82AA753F0002A34C6 /* SceneDelegate.swift in Sources */,
-				A4C453F12AA754E0002A34C6 /* Core .swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,9 +510,10 @@
 				DEVELOPMENT_TEAM = NF9R7KNMC7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MessageApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take a picture";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allow access to select  a photo for your profile";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -534,9 +539,10 @@
 				DEVELOPMENT_TEAM = NF9R7KNMC7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MessageApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take a picture";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allow access to select  a photo for your profile";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
