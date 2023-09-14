@@ -26,7 +26,7 @@ extension MessageViewController: UITableViewDelegate,UITableViewDataSource,UISea
         let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! MessageTableViewCell
         cell.usersNameLabel.text = message.sender == loggedInUserId ? message.receiver : message.sender
         cell.shortMessageLabel.text = message.message
-        cell.imageViews.image = UIImage(named: "persons")
+        cell.imageViews.image = myImage
         cell.imageViews.layer.cornerRadius = 25
         
         tableView.rowHeight = 90

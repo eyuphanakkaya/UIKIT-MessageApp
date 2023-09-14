@@ -16,6 +16,7 @@
 		A488D1972AA8B4E200E69AF0 /* PersonsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488D1962AA8B4E200E69AF0 /* PersonsTableViewCell.swift */; };
 		A488D19B2AA8B72D00E69AF0 /* MessageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488D19A2AA8B72D00E69AF0 /* MessageExtension.swift */; };
 		A488D19D2AA8B77200E69AF0 /* PersonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488D19C2AA8B77200E69AF0 /* PersonExtension.swift */; };
+		A48AB99C2AB32587008443DD /* SettingsExxtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48AB99B2AB32587008443DD /* SettingsExxtension.swift */; };
 		A493BEE92AA9B4BF007D3E63 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A493BEE82AA9B4BF007D3E63 /* GoogleService-Info.plist */; };
 		A493BEEC2AA9B654007D3E63 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A493BEEB2AA9B654007D3E63 /* FirebaseAnalytics */; };
 		A493BEEE2AA9B654007D3E63 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A493BEED2AA9B654007D3E63 /* FirebaseAuth */; };
@@ -58,6 +59,7 @@
 		A488D1962AA8B4E200E69AF0 /* PersonsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsTableViewCell.swift; sourceTree = "<group>"; };
 		A488D19A2AA8B72D00E69AF0 /* MessageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageExtension.swift; sourceTree = "<group>"; };
 		A488D19C2AA8B77200E69AF0 /* PersonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonExtension.swift; sourceTree = "<group>"; };
+		A48AB99B2AB32587008443DD /* SettingsExxtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsExxtension.swift; sourceTree = "<group>"; };
 		A493BEE82AA9B4BF007D3E63 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A493BEF52AA9B92F007D3E63 /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		A493BEF92AA9BC22007D3E63 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				A488D19C2AA8B77200E69AF0 /* PersonExtension.swift */,
 				A493BEFB2AA9BD9B007D3E63 /* ChatExtension.swift */,
 				A40077912AAF0BE200B6FBCF /* ChatsExtension.swift */,
+				A48AB99B2AB32587008443DD /* SettingsExxtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A48AB99C2AB32587008443DD /* SettingsExxtension.swift in Sources */,
 				A4BA26422AA8A151007D0005 /* RegisterViewController.swift in Sources */,
 				A42C11CA2AAB0D59002E54BC /* Messages.swift in Sources */,
 				A40077922AAF0BE200B6FBCF /* ChatsExtension.swift in Sources */,

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseStorage
 import Firebase
 
 class MessageViewController: UIViewController {
@@ -13,7 +14,9 @@ class MessageViewController: UIViewController {
     var searchActive = true
     var messageList = [Users]()
     var searchList = [Users]()
+    var myImage: UIImage?
     var loggedInUserId: String?
+    var myReceiver = [String]()
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
@@ -30,7 +33,32 @@ class MessageViewController: UIViewController {
             fetchMessagePersons()
         }
        
+
     }
+    override func viewWillAppear(_ animated: Bool) {
+        fetchProfileImagesForReceivers()
+
+    }
+    func fetchProfileImagesForReceivers() {
+        let storageRef = Storage.storage().reference()
+        
+        for receiverEmail in myReceiver {
+            let imageRef = storageRef.child("images/\(receiverEmail)/resim.jpg")
+            imageRef.getData(maxSize: 1 * 1024 * 1024) { [weak self, receiverEmail] data, error in
+                if let error = error {
+                    print("Resim indirme hatası (\(receiverEmail)): \(error.localizedDescription)")
+                } else if let data = data, let image = UIImage(data: data) {
+                    self?.myImage = image
+                    print("Resim başarıyla yüklendi (\(receiverEmail))")
+                    
+                    DispatchQueue.main.async {
+                        self?.tableView.reloadData()
+                    }
+                }
+            }
+        }
+    }
+
     func fetchMessagePersons() {
         ref?.child("Messages").observe(.value, with: { snapshot in
             var latestMessages = [String: Users]() // Kullanıcı kimliği ile son mesajları depolamak için bir sözlük
@@ -44,7 +72,6 @@ class MessageViewController: UIViewController {
                                 print("Mesaja veri gelmedi HATAA!!!")
                                 return
                         }
-                        
                         // Sadece giriş yapan kullanıcının gönderdiği veya aldığı mesajları alın
                         if sender == self.loggedInUserId || receiver == self.loggedInUserId {
                             let messages = Users(image: "", name: "", lastName: "", email: sender == self.loggedInUserId ? receiver : sender, password: "", sender: sender, receiver: receiver, message: message, time: Date().timeIntervalSince1970)
@@ -56,10 +83,13 @@ class MessageViewController: UIViewController {
                             if let existingMessage = latestMessages[otherUserId] {
                                 if messages.time ?? 0 > existingMessage.time ?? 0 {
                                     latestMessages[otherUserId] = messages
+//                                    self.myReceiver = messages.receiver
                                 }
                             } else {
                                 // Eğer kullanıcının henüz mesajı yoksa, ekleyin
                                 latestMessages[otherUserId] = messages
+                                self.myReceiver.append(otherUserId)
+                              
                             }
                         }
                     }

@@ -51,7 +51,7 @@ class RegisterViewController: UIViewController {
                
             } else {
                 let user = Users(image: "", name: name, lastName: lastName, email: email, password: password, sender: "", receiver: "", message: "", time: 0)
-                let dict = ["image": user.image, "name": user.name, "lastName": user.lastName, "email": user.email, "password": user.password]
+                let dict = ["name": user.name, "lastName": user.lastName, "email": user.email, "password": user.password]
                 let newRef = ref?.child("Users").childByAutoId()
                 newRef?.setValue(dict)
                 alert.alert(title: "Success", message: "User is created", viewControllers: self)

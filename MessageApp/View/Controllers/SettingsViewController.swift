@@ -7,9 +7,10 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 
 class SettingsViewController: UIViewController {
-
+    
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var fullNameTextField: UITextField!
@@ -19,6 +20,7 @@ class SettingsViewController: UIViewController {
     var list = [Users]()
     var loginUser: String?
     var ref: DatabaseReference?
+    var myImage: UIImage?
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
@@ -39,15 +41,11 @@ class SettingsViewController: UIViewController {
         
         if let user =  Auth.auth().currentUser {
             loginUser = user.email
-            print(user.uid)
         }
-       
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         fetchLoginUser()
-        for x in list {
-            print("Adı\(x.email)")
-        }
     }
     @IBAction func logoutClicked(_ sender: Any) {
         do {
@@ -58,14 +56,14 @@ class SettingsViewController: UIViewController {
             }
             
             // Oturum durumunu kaydet
-//            UserDefaults.standard.set(false, forKey: "isLoggedIn")
-//            UserDefaults.standard.synchronize()
+            //            UserDefaults.standard.set(false, forKey: "isLoggedIn")
+            //            UserDefaults.standard.synchronize()
         } catch {
             print("Çıkış yapılamadı")
         }
     }
-
-   @objc private func didTapChangeProfilePhoto() {
+    
+    @objc private func didTapChangeProfilePhoto() {
         presentPhotoActionSheet()
     }
     
@@ -74,13 +72,15 @@ class SettingsViewController: UIViewController {
            let name = fullNameTextField.text,
            let password = passwordTextField.text {
             updateLogin(email: email, name: name, password: password)
-            alert.alert(title: "Updated", message: "Person updated.", viewControllers: self)
+            guard let images = myImage else {
+                return
+            }
+            uploadImageToStorage(image: images)
         } else {
             print("güncellenmedi")
         }
         
     }
-    
     func fetchLoginUser() {
         ref?.child("Users").observe(.value, with: { snapShot in
             guard let incomingData = snapShot.value as? [String: Any] else{
@@ -90,74 +90,68 @@ class SettingsViewController: UIViewController {
             for incomingLine in incomingData {
                 if let dict = incomingLine.value as? NSDictionary {
                     guard let email = dict["email"] as? String,
-                    let name = dict["name"] as? String,
-                    let lastName = dict["lastName"] as? String,
-                    let password = dict["password"] as? String,
-                    let image = dict["image"] as? String else{
+                          let name = dict["name"] as? String,
+                          let lastName = dict["lastName"] as? String,
+                          let password = dict["password"] as? String else{
                         return
                     }
-                    let findLogin = Users(image: image, name: name, lastName: lastName, email: email, password: password, sender: "", receiver: "", message: "", time: 0)
-                    self.list.append(findLogin)
-                       
+                    let findLogin = Users(image: "", name: name, lastName: lastName, email: email, password: password, sender: "", receiver: "", message: "", time: 0)
+
+                    if email == self.loginUser {
+                        self.emailTextField.text = findLogin.email
+                        self.passwordTextField.text = findLogin.password
+                        self.fullNameTextField.text = findLogin.name
+//                             self.imageView.image = findLogin.image
+
+                    }
 
                 }
             }
-            for (index, user) in self.list.enumerated() {
-                // Kullanıcının bilgilerini karşılaştırın (örneğin, kullanıcı adıyla karşılaştırma yapabilirsiniz)
-                if user.email != self.loginUser {
-                    // Giriş yapan kullanıcıyı listeden kaldırın
-                    self.list.remove(at: index)
-                    return // Kullanıcıyı bulduktan sonra döngüden çıkın
-                }
+
+        })
+    }
+    func uploadImageToStorage(image: UIImage) {
+        guard let loginUser = loginUser else {
+            return
+        }
+
+        guard let imageData = image.jpegData(compressionQuality: 0.5) else {
+            // Resmi veriye dönüştürme hatası
+            return
+        }
+
+        let storageRef = Storage.storage().reference()
+        let imageRef = storageRef.child("images/\(loginUser)/resim.jpg") // Kaydedilecek resmin adı
+
+        // Resmi Firebase Storage'a yükle
+        imageRef.putData(imageData, metadata: nil) { (metadata, error) in
+            if let error = error {
+                // Yükleme hatası
+                print("Yükleme Hatası: \(error.localizedDescription)")
+            } else {
+                // Yükleme başarılı
+                print("Resim başarıyla yüklendi.")
+
+                // Yükleme sonrası işlemleri burada gerçekleştirebilirsiniz.
+            }
+        }
+    }
+
+    func updateLogin(email: String,name: String,password: String) {
+        ref?.child("Users").queryOrdered(byChild: "email").queryEqual(toValue: email).observeSingleEvent(of: .value, with: { snapShot in
+            if let userSnapshot = snapShot.children.allObjects.first as? DataSnapshot,
+               let userId = userSnapshot.key as? String {
+                    let dict : [String: Any] = ["email":email,"name":name,"password":password]
+                    self.ref?.child("Users").child(userId).updateChildValues(dict,withCompletionBlock: { error,result in
+                        if error != nil {
+                            print("Hata")
+                        } else {
+                            self.alert.alert(title: "Updated", message: "Person updated.", viewControllers: self)
+                        }
+                        
+                    })
             }
         })
     }
-    func  updateLogin(email: String,name: String,password: String) {
-        if let id = Auth.auth().currentUser?.uid {
-            print(id)
-            let dict : [String: Any] = ["email":email,"name": name,"password": password]
-            ref?.child("Users").child(id).updateChildValues(dict)
-        }
-    }
 }
-extension SettingsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func presentPhotoActionSheet() {
-        let actionSheet = UIAlertController(title: "Profile Picture",
-                                            message: "How would you like to select a picture?",
-                                            preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        actionSheet.addAction(UIAlertAction(title: "Take Photo", style: .default,handler: { [weak self]_ in
-                self?.presentCamera()
-        }))
-        actionSheet.addAction(UIAlertAction(title: "Choose Photo", style: .default,handler: { [weak self] _ in
-                self?.presentPhotoPicker()
-        }))
-        present(actionSheet, animated: true)
-    }
-    func presentCamera() {
-        let vc = UIImagePickerController()
-        vc.sourceType = .camera
-        vc.delegate = self
-        vc.allowsEditing = true
-        present(vc, animated: true)
-        
-    }
-    func presentPhotoPicker() {
-        let vc = UIImagePickerController()
-        vc.sourceType = .photoLibrary
-        vc.delegate = self
-        vc.allowsEditing = true
-        present(vc, animated: true)
-    }
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true)
-    }
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {//seçimi bırakırsa
-        guard let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else{
-            return
-        }
-        self.imageView.image = selectedImage
-      
-    }
-    
-}
+

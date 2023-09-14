@@ -43,8 +43,7 @@ class PersonsViewController: UIViewController {
                 self.myUsers.removeAll()
                 for gelenSatir in gelenVeri {
                     if let sozluk = gelenSatir.value as? NSDictionary {
-                        guard let image = sozluk["image"] as? String,
-                              let name = sozluk["name"] as? String,
+                        guard let name = sozluk["name"] as? String,
                               let lastName = sozluk["lastName"] as? String,
                               let email = sozluk["email"] as? String,
                               let password = sozluk["password"] as? String else{
