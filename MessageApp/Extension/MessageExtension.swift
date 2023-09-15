@@ -14,19 +14,27 @@ extension MessageViewController: UITableViewDelegate,UITableViewDataSource,UISea
         1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchActive {
-           return  messageList.count
+        if viewModel.searchActive {
+            return  viewModel.messageList.count
         } else {
-           return searchList.count
+            return viewModel.searchList.count
         }
        
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let message = searchActive == true ? messageList[indexPath.row] : searchList[indexPath.row]
+        let message = viewModel.searchActive == true ? viewModel.messageList[indexPath.row] : viewModel.searchList[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! MessageTableViewCell
-        cell.usersNameLabel.text = message.sender == loggedInUserId ? message.receiver : message.sender
+        cell.usersNameLabel.text = message.sender == viewModel.loggedInUserId ? message.receiver : message.sender
         cell.shortMessageLabel.text = message.message
-        cell.imageViews.image = myImage
+        
+        if let userImage = viewModel.myImage[message.receiver ?? ""] {
+            // Kullanıcıya ait görüntüyü bulundu, kullanabilirsiniz.
+            print(message.receiver)
+            cell.imageViews.image = userImage
+        } else {
+            // Kullanıcıya ait görüntü bulunamadı, varsayılan görüntüyü kullanabilirsiniz.
+            cell.imageViews.image = UIImage(named: "persons")
+        }
         cell.imageViews.layer.cornerRadius = 25
         
         tableView.rowHeight = 90
@@ -34,23 +42,23 @@ extension MessageViewController: UITableViewDelegate,UITableViewDataSource,UISea
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let message = searchActive == true ? messageList[indexPath.row] : searchList[indexPath.row]
+        let message = viewModel.searchActive == true ? viewModel.messageList[indexPath.row] : viewModel.searchList[indexPath.row]
         let vc = ChatViewController()
         vc.title = "Chat"
         vc.person = message
         if let users = Auth.auth().currentUser {
-            self.loggedInUserId = users.email
+            viewModel.loggedInUserId = users.email
             // Şimdi fetchPersons işlevini çağırabilirsiniz
-            vc.senderUser = loggedInUserId
+            vc.senderUser = viewModel.loggedInUserId
         }
         self.navigationController?.pushViewController(vc, animated: true)
     }
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchActive = false
+        viewModel.searchActive = false
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if let search = searchBar.text {
-            searchList = messageList.filter{ message in
+            viewModel.searchList = viewModel.messageList.filter{ message in
                 if !search.isEmpty {
                     let searchTextMatch = message.receiver?.contains(search.lowercased())
                     return searchTextMatch ?? false

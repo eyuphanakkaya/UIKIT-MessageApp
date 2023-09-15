@@ -16,14 +16,11 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var fullNameTextField: UITextField!
     @IBOutlet weak var customView: UIView!
     @IBOutlet weak var imageView: UIImageView!
+    var viewModel = SettingsViewModel()
     var alert = Alerts()
-    var list = [Users]()
-    var loginUser: String?
-    var ref: DatabaseReference?
     var myImage: UIImage?
     override func viewDidLoad() {
         super.viewDidLoad()
-        ref = Database.database().reference()
         
         passwordTextField.leftViewMode = .always
         emailTextField.leftViewMode = .always
@@ -39,14 +36,22 @@ class SettingsViewController: UIViewController {
         imageView.addGestureRecognizer(gesture)
         customView.layer.cornerRadius = 15
         
-        if let user =  Auth.auth().currentUser {
-            loginUser = user.email
-        }
         
     }
     override func viewDidAppear(_ animated: Bool) {
-        fetchProfileImageForCurrentUser()
-        fetchLoginUser()
+        viewModel.fetchProfileImageForCurrentUser(imageView: imageView)
+        viewModel.fetchLoginUser { user in
+
+            guard let email = user.email,
+               let password = user.password,
+               let name = user.name else{
+                return
+            }
+            self.emailTextField.text = email
+            self.passwordTextField.text = password
+            self.fullNameTextField.text = name
+            
+        }
     }
     @IBAction func logoutClicked(_ sender: Any) {
         do {
@@ -69,109 +74,32 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func updateClicked(_ sender: Any) {
-        if let email = emailTextField.text ,
-           let name = fullNameTextField.text,
-           let password = passwordTextField.text {
-            updateLogin(email: email, name: name, password: password)
-            guard let images = myImage else {
-                return
-            }
-            uploadImageToStorage(image: images)
-        } else {
-            print("güncellenmedi")
-        }
-        
-    }
-    func fetchLoginUser() {
-        ref?.child("Users").observe(.value, with: { snapShot in
-            guard let incomingData = snapShot.value as? [String: Any] else{
-                print("Veri çekilemedi")
-                return
-            }
-            for incomingLine in incomingData {
-                if let dict = incomingLine.value as? NSDictionary {
-                    guard let email = dict["email"] as? String,
-                          let name = dict["name"] as? String,
-                          let lastName = dict["lastName"] as? String,
-                          let password = dict["password"] as? String else{
-                        return
-                    }
-                    let findLogin = Users(image: "", name: name, lastName: lastName, email: email, password: password, sender: "", receiver: "", message: "", time: 0)
-
-                    if email == self.loginUser {
-                        self.emailTextField.text = findLogin.email
-                        self.passwordTextField.text = findLogin.password
-                        self.fullNameTextField.text = findLogin.name
-//                             self.imageView.image = findLogin.image
-
-                    }
-
-                }
-            }
-
-        })
-    }
-    func uploadImageToStorage(image: UIImage) {
-        guard let imageData = image.jpegData(compressionQuality: 0.5) else {
-            // Resmi veriye dönüştürme hatası
+        guard let email = emailTextField.text ,
+              let name = fullNameTextField.text,
+              let password = passwordTextField.text else {
             return
         }
-        
-        let storageRef = Storage.storage().reference()
-        let email = loginUser ?? "" // Kullanıcının e-posta adresini kullanarak resmin yolunu belirleyin
-        let imageName = "resim.jpg" // Kaydedilecek resmin adı
-        
-        let imageRef = storageRef.child("images/\(email)/\(imageName)")
-        
-        // Resmi Firebase Storage'a yükle
-        imageRef.putData(imageData, metadata: nil) { (metadata, error) in
-            if let error = error {
-                // Yükleme hatası
-                print("Yükleme Hatası: \(error.localizedDescription)")
+        viewModel.updateLogin(email: email, name: name, password: password) { result  in
+            print(result)
+            if result {
+                print(result)
+                print("Hata")
             } else {
-                // Yükleme başarılı
-               // print("Resim başarıyla yüklendi.")
-                
-                // Yükleme sonrası işlemleri burada gerçekleştirebilirsiniz.
+                self.alert.alert(title: "Updated", message: "Person updated.", viewControllers: self)
             }
         }
-    }
-    func fetchProfileImageForCurrentUser() {
-        guard let loginUser = loginUser else {
+        guard let images = myImage else {
             return
         }
+        viewModel.uploadImageToStorage(image: images)
         
-        let storageRef = Storage.storage().reference()
-        let imageRef = storageRef.child("images/\(loginUser)/resim.jpg") // Resmin yolunu belirtin
         
-        // Resmi indirme işlemi
-        imageRef.getData(maxSize: 1 * 1024 * 1024) { [weak self] data, error in
-            if let error = error {
-                print("Resim indirme hatası: \(error.localizedDescription)")
-            } else if let data = data, let image = UIImage(data: data) {
-                // Resmi görüntüleme
-                self?.imageView.image = image
-            }
-        }
     }
 
 
-
-    func updateLogin(email: String,name: String,password: String) {
-        ref?.child("Users").queryOrdered(byChild: "email").queryEqual(toValue: email).observeSingleEvent(of: .value, with: { snapShot in
-            if let userSnapshot = snapShot.children.allObjects.first as? DataSnapshot,
-               let userId = userSnapshot.key as? String {
-                    let dict : [String: Any] = ["email":email,"name":name,"password":password]
-                    self.ref?.child("Users").child(userId).updateChildValues(dict,withCompletionBlock: { error,result in
-                        if error != nil {
-                            print("Hata")
-                        } else {
-                            self.alert.alert(title: "Updated", message: "Person updated.", viewControllers: self)
-                        }
-                        
-                    })
-            }
-        })
-    }
+    
+    
+    
+    
 }
 

@@ -13,27 +13,33 @@ extension PersonsViewController: UITableViewDelegate,UITableViewDataSource, UISe
         1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchActive {
-            return myUsers.count
+        if personViewModel.searchActive {
+            return personViewModel.myUsers.count
         } else {
-            return filterUser.count
+            return personViewModel.filterUser.count
         }
         
         
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let user = searchActive == true ? myUsers[indexPath.row] : filterUser[indexPath.row]
+        let user = personViewModel.searchActive == true ? personViewModel.myUsers[indexPath.row] : personViewModel.filterUser[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "personCell", for: indexPath) as! PersonsTableViewCell
         cell.userNameLabel.text = user.name
         cell.userPhoneLabel.text = user.email
-        cell.imageViews.image = UIImage(named:"persons")
+        if let userImage = viewModel.myImage[user.email ?? ""] {
+            // Kullanıcıya ait görüntüyü bulundu, kullanabilirsiniz.
+            cell.imageViews.image = userImage
+        } else {
+            // Kullanıcıya ait görüntü bulunamadı, varsayılan görüntüyü kullanabilirsiniz.
+            cell.imageViews.image = UIImage(named: "persons")
+        }
         cell.imageViews.layer.cornerRadius = 25
         tableView.rowHeight = 90
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let user = searchActive == true ? myUsers[indexPath.row] : filterUser[indexPath.row]
+        let user = personViewModel.searchActive == true ? personViewModel.myUsers[indexPath.row] : personViewModel.filterUser[indexPath.row]
         let vc = ChatViewController()
         vc.title = "Chat"
         vc.person = user
@@ -42,12 +48,12 @@ extension PersonsViewController: UITableViewDelegate,UITableViewDataSource, UISe
         self.navigationController?.pushViewController(vc, animated: true)
     }
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchActive = false
+        personViewModel.searchActive = false
         
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if let search = searchBar.text {
-            filterUser = myUsers.filter{ users in
+            personViewModel.filterUser = personViewModel.myUsers.filter{ users in
                 if !search.isEmpty {
                     let searchTextMatch = users.name?.lowercased().contains(search.lowercased())
                     return searchTextMatch ?? false

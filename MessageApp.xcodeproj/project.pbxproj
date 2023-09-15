@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		A40077922AAF0BE200B6FBCF /* ChatsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40077912AAF0BE200B6FBCF /* ChatsExtension.swift */; };
+		A41852742AB45240007457DE /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41852732AB45240007457DE /* SettingViewModel.swift */; };
+		A41852762AB4615B007457DE /* PersonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41852752AB4615B007457DE /* PersonViewModel.swift */; };
+		A418527A2AB4932C007457DE /* MainViewModel .swift in Sources */ = {isa = PBXBuildFile; fileRef = A41852792AB4932C007457DE /* MainViewModel .swift */; };
 		A42C11CA2AAB0D59002E54BC /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C11C92AAB0D59002E54BC /* Messages.swift */; };
 		A450F05C2AA8658A0018DB9D /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A450F05B2AA8658A0018DB9D /* IntroViewController.swift */; };
 		A488D1912AA8B46400E69AF0 /* PersonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488D1902AA8B46400E69AF0 /* PersonsViewController.swift */; };
@@ -51,6 +54,9 @@
 
 /* Begin PBXFileReference section */
 		A40077912AAF0BE200B6FBCF /* ChatsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsExtension.swift; sourceTree = "<group>"; };
+		A41852732AB45240007457DE /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		A41852752AB4615B007457DE /* PersonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewModel.swift; sourceTree = "<group>"; };
+		A41852792AB4932C007457DE /* MainViewModel .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewModel .swift"; sourceTree = "<group>"; };
 		A42C11C92AAB0D59002E54BC /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		A450F05B2AA8658A0018DB9D /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		A488D1902AA8B46400E69AF0 /* PersonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +188,9 @@
 			isa = PBXGroup;
 			children = (
 				A4EAFC0C2AA9D14200CA6B00 /* MessageViewModel.swift */,
+				A41852732AB45240007457DE /* SettingViewModel.swift */,
+				A41852752AB4615B007457DE /* PersonViewModel.swift */,
+				A41852792AB4932C007457DE /* MainViewModel .swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -343,6 +352,7 @@
 				A48AB99C2AB32587008443DD /* SettingsExtension.swift in Sources */,
 				A4BA26422AA8A151007D0005 /* RegisterViewController.swift in Sources */,
 				A42C11CA2AAB0D59002E54BC /* Messages.swift in Sources */,
+				A41852742AB45240007457DE /* SettingViewModel.swift in Sources */,
 				A40077922AAF0BE200B6FBCF /* ChatsExtension.swift in Sources */,
 				A4C453F32AA75962002A34C6 /* PageModel.swift in Sources */,
 				A4EAFC0F2AA9E68D00CA6B00 /* ChatViewController.swift in Sources */,
@@ -351,6 +361,7 @@
 				A4EAFC0D2AA9D14200CA6B00 /* MessageViewModel.swift in Sources */,
 				A4956E2A2AB0A03E00995E86 /* SettingsViewController.swift in Sources */,
 				A488D1972AA8B4E200E69AF0 /* PersonsTableViewCell.swift in Sources */,
+				A41852762AB4615B007457DE /* PersonViewModel.swift in Sources */,
 				A4EAFC082AA9C64400CA6B00 /* Users.swift in Sources */,
 				A4EAFC0B2AA9CC4D00CA6B00 /* Alerts.swift in Sources */,
 				A488D1912AA8B46400E69AF0 /* PersonsViewController.swift in Sources */,
@@ -365,6 +376,7 @@
 				A4C453F52AA75EE6002A34C6 /* PagesViewController.swift in Sources */,
 				A488D19D2AA8B77200E69AF0 /* PersonExtension.swift in Sources */,
 				A4C453D82AA753F0002A34C6 /* SceneDelegate.swift in Sources */,
+				A418527A2AB4932C007457DE /* MainViewModel .swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,25 +1,21 @@
 //
-//  MessageViewModel.swift
+//  ViewModel .swift
 //  MessageApp
 //
-//  Created by Eyüphan Akkaya on 7.09.2023.
+//  Created by Eyüphan Akkaya on 15.09.2023.
 //
 
 import Foundation
 import Firebase
-import UIKit
 import FirebaseStorage
 
-class MessageViewModel {
-    var myUsers = [Users]()
+class MainViewModel {
     var ref: DatabaseReference?
+    var loggedInUserId: String?
     var myReceiver = [String]()
     var myImage: [String: UIImage] = [:]
-    var messageList = [Users]()
-    var searchActive = true
-    var searchList = [Users]()
-    var loggedInUserId: String?
     var myImageState = true
+    var messageList = [Users]()
     init() {
         if let user = Auth.auth().currentUser {
             loggedInUserId = user.email
@@ -96,4 +92,3 @@ class MessageViewModel {
         })
     }
 }
-
