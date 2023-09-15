@@ -45,6 +45,7 @@ class SettingsViewController: UIViewController {
         
     }
     override func viewDidAppear(_ animated: Bool) {
+        fetchProfileImageForCurrentUser()
         fetchLoginUser()
     }
     @IBAction func logoutClicked(_ sender: Any) {
@@ -111,18 +112,17 @@ class SettingsViewController: UIViewController {
         })
     }
     func uploadImageToStorage(image: UIImage) {
-        guard let loginUser = loginUser else {
-            return
-        }
-
         guard let imageData = image.jpegData(compressionQuality: 0.5) else {
             // Resmi veriye dönüştürme hatası
             return
         }
-
+        
         let storageRef = Storage.storage().reference()
-        let imageRef = storageRef.child("images/\(loginUser)/resim.jpg") // Kaydedilecek resmin adı
-
+        let email = loginUser ?? "" // Kullanıcının e-posta adresini kullanarak resmin yolunu belirleyin
+        let imageName = "resim.jpg" // Kaydedilecek resmin adı
+        
+        let imageRef = storageRef.child("images/\(email)/\(imageName)")
+        
         // Resmi Firebase Storage'a yükle
         imageRef.putData(imageData, metadata: nil) { (metadata, error) in
             if let error = error {
@@ -130,12 +130,32 @@ class SettingsViewController: UIViewController {
                 print("Yükleme Hatası: \(error.localizedDescription)")
             } else {
                 // Yükleme başarılı
-                print("Resim başarıyla yüklendi.")
-
+               // print("Resim başarıyla yüklendi.")
+                
                 // Yükleme sonrası işlemleri burada gerçekleştirebilirsiniz.
             }
         }
     }
+    func fetchProfileImageForCurrentUser() {
+        guard let loginUser = loginUser else {
+            return
+        }
+        
+        let storageRef = Storage.storage().reference()
+        let imageRef = storageRef.child("images/\(loginUser)/resim.jpg") // Resmin yolunu belirtin
+        
+        // Resmi indirme işlemi
+        imageRef.getData(maxSize: 1 * 1024 * 1024) { [weak self] data, error in
+            if let error = error {
+                print("Resim indirme hatası: \(error.localizedDescription)")
+            } else if let data = data, let image = UIImage(data: data) {
+                // Resmi görüntüleme
+                self?.imageView.image = image
+            }
+        }
+    }
+
+
 
     func updateLogin(email: String,name: String,password: String) {
         ref?.child("Users").queryOrdered(byChild: "email").queryEqual(toValue: email).observeSingleEvent(of: .value, with: { snapShot in
