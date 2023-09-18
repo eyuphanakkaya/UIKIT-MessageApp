@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 
 class PersonsViewController: UIViewController {
     var loggedInUserId: String?
@@ -22,11 +23,13 @@ class PersonsViewController: UIViewController {
         searchBar.delegate = self
         personViewModel.myUsers.sort(by: { $0.email ?? "" < $1.email ?? "" })
         personViewModel.persons(tableView: tableView)
+        viewModel.fetchMessagePersons(tableView: tableView)
        
     }
-    override func viewWillAppear(_ animated: Bool) {
-        viewModel.fetchMessagePersons(tableView: tableView)
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//      
+//        viewModel.fetchProfileImagesForReceivers(tableView: tableView)
+//    }
 
     
 

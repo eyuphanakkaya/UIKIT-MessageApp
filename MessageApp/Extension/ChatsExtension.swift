@@ -24,7 +24,6 @@ extension ChatViewController: MessagesDataSource, MessagesLayoutDelegate, Messag
     }
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         
-        
         let mesaj =  Users(image: "", name: "", lastName: "", email: "", password: "", sender: senderUser ?? "", receiver: person?.email ?? "", message: text, time: Date().timeIntervalSince1970)
         let dict: [String: Any] = ["sender": mesaj.sender,"receiver": mesaj.receiver,"message": mesaj.message,"time": mesaj.time ] 
         let newRef = ref?.child("Messages").childByAutoId()

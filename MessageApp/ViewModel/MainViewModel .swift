@@ -10,12 +10,15 @@ import Firebase
 import FirebaseStorage
 
 class MainViewModel {
+    var myUsers = [Users]()
     var ref: DatabaseReference?
-    var loggedInUserId: String?
     var myReceiver = [String]()
     var myImage: [String: UIImage] = [:]
-    var myImageState = true
     var messageList = [Users]()
+    var searchActive = true
+    var searchList = [Users]()
+    var loggedInUserId: String?
+    var myImageState = true
     init() {
         if let user = Auth.auth().currentUser {
             loggedInUserId = user.email
@@ -33,7 +36,6 @@ class MainViewModel {
                     //    print("Resim indirme hatası (\(receiverEmail)): \(error.localizedDescription)")
                 } else if let data = data, let image = UIImage(data: data) {
                     self?.myImage[receiverEmail] = image
-                    print(receiverEmail)
                     //  print("Resim başarıyla yüklendi (\(receiverEmail))")
                     self?.myImageState = true
                     DispatchQueue.main.async {
@@ -73,6 +75,7 @@ class MainViewModel {
                                 // Eğer kullanıcının henüz mesajı yoksa, ekleyin
                                 latestMessages[otherUserId] = messages
                                 self.myReceiver.append(otherUserId)
+                                
                                 
                             }
                         }

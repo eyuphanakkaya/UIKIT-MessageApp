@@ -26,9 +26,7 @@
 		A493BEF02AA9B654007D3E63 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = A493BEEF2AA9B654007D3E63 /* FirebaseDatabase */; };
 		A493BEF22AA9B654007D3E63 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A493BEF12AA9B654007D3E63 /* FirebaseFirestore */; };
 		A493BEF42AA9B654007D3E63 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A493BEF32AA9B654007D3E63 /* FirebaseStorage */; };
-		A493BEF62AA9B92F007D3E63 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A493BEF52AA9B92F007D3E63 /* ChatsViewController.swift */; };
 		A493BEFA2AA9BC22007D3E63 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A493BEF92AA9BC22007D3E63 /* ChatTableViewCell.swift */; };
-		A493BEFC2AA9BD9B007D3E63 /* ChatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A493BEFB2AA9BD9B007D3E63 /* ChatExtension.swift */; };
 		A4956E2A2AB0A03E00995E86 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4956E292AB0A03E00995E86 /* SettingsViewController.swift */; };
 		A4BA26332AA88CBA007D0005 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA26322AA88CBA007D0005 /* LoginViewController.swift */; };
 		A4BA26362AA88FB2007D0005 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A4BA26352AA88FB2007D0005 /* Lottie */; };
@@ -57,6 +55,7 @@
 		A41852732AB45240007457DE /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		A41852752AB4615B007457DE /* PersonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewModel.swift; sourceTree = "<group>"; };
 		A41852792AB4932C007457DE /* MainViewModel .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewModel .swift"; sourceTree = "<group>"; };
+		A41ADE152AB89A4800DDC8DF /* MessageApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MessageApp.entitlements; sourceTree = "<group>"; };
 		A42C11C92AAB0D59002E54BC /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		A450F05B2AA8658A0018DB9D /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		A488D1902AA8B46400E69AF0 /* PersonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsViewController.swift; sourceTree = "<group>"; };
@@ -67,9 +66,7 @@
 		A488D19C2AA8B77200E69AF0 /* PersonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonExtension.swift; sourceTree = "<group>"; };
 		A48AB99B2AB32587008443DD /* SettingsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsExtension.swift; sourceTree = "<group>"; };
 		A493BEE82AA9B4BF007D3E63 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		A493BEF52AA9B92F007D3E63 /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		A493BEF92AA9BC22007D3E63 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
-		A493BEFB2AA9BD9B007D3E63 /* ChatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatExtension.swift; sourceTree = "<group>"; };
 		A4956E292AB0A03E00995E86 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A4BA26322AA88CBA007D0005 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A4BA26392AA89097007D0005 /* image1.1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = image1.1.json; sourceTree = "<group>"; };
@@ -127,7 +124,6 @@
 			children = (
 				A488D19A2AA8B72D00E69AF0 /* MessageExtension.swift */,
 				A488D19C2AA8B77200E69AF0 /* PersonExtension.swift */,
-				A493BEFB2AA9BD9B007D3E63 /* ChatExtension.swift */,
 				A40077912AAF0BE200B6FBCF /* ChatsExtension.swift */,
 				A48AB99B2AB32587008443DD /* SettingsExtension.swift */,
 			);
@@ -163,6 +159,7 @@
 		A4C453D42AA753F0002A34C6 /* MessageApp */ = {
 			isa = PBXGroup;
 			children = (
+				A41ADE152AB89A4800DDC8DF /* MessageApp.entitlements */,
 				A488D1992AA8B71700E69AF0 /* Extension */,
 				A4C453ED2AA75413002A34C6 /* Resources */,
 				A4C453EC2AA7540F002A34C6 /* Model */,
@@ -235,7 +232,6 @@
 				A4BA26432AA8A94E007D0005 /* ForgotViewController.swift */,
 				A488D1902AA8B46400E69AF0 /* PersonsViewController.swift */,
 				A488D1922AA8B4BA00E69AF0 /* MessageViewController.swift */,
-				A493BEF52AA9B92F007D3E63 /* ChatsViewController.swift */,
 				A4EAFC0E2AA9E68D00CA6B00 /* ChatViewController.swift */,
 				A4956E292AB0A03E00995E86 /* SettingsViewController.swift */,
 			);
@@ -357,7 +353,6 @@
 				A4C453F32AA75962002A34C6 /* PageModel.swift in Sources */,
 				A4EAFC0F2AA9E68D00CA6B00 /* ChatViewController.swift in Sources */,
 				A4BA26442AA8A94E007D0005 /* ForgotViewController.swift in Sources */,
-				A493BEFC2AA9BD9B007D3E63 /* ChatExtension.swift in Sources */,
 				A4EAFC0D2AA9D14200CA6B00 /* MessageViewModel.swift in Sources */,
 				A4956E2A2AB0A03E00995E86 /* SettingsViewController.swift in Sources */,
 				A488D1972AA8B4E200E69AF0 /* PersonsTableViewCell.swift in Sources */,
@@ -366,7 +361,6 @@
 				A4EAFC0B2AA9CC4D00CA6B00 /* Alerts.swift in Sources */,
 				A488D1912AA8B46400E69AF0 /* PersonsViewController.swift in Sources */,
 				A450F05C2AA8658A0018DB9D /* IntroViewController.swift in Sources */,
-				A493BEF62AA9B92F007D3E63 /* ChatsViewController.swift in Sources */,
 				A488D19B2AA8B72D00E69AF0 /* MessageExtension.swift in Sources */,
 				A488D1952AA8B4D500E69AF0 /* MessageTableViewCell.swift in Sources */,
 				A4C453D62AA753F0002A34C6 /* AppDelegate.swift in Sources */,
@@ -521,6 +515,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MessageApp/MessageApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NF9R7KNMC7;
@@ -550,6 +545,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MessageApp/MessageApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NF9R7KNMC7;
