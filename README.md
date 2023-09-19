@@ -1,4 +1,21 @@
 # UIKIT-MessageApp
+MESSAGE APP
+Uygulama, kullanıcıları bilgilendirme ekranıyla karşılıyor. Ardından, giriş yapmak isteyen kullanıcılar için "Giriş", üye olmak isteyen kullanıcılar için "Kayıt Ol", veya şifresini unutan kullanıcılar için "Şifremi Unuttum" seçeneklerini sunuyor. Ayrıca, Google hesabı ile giriş yapmak isteyen kullanıcılar da Google hesaplarıyla giriş yapabilirler.
+
+Doğru bilgileri girdikten sonra giriş yapan kullanıcılar, kişiler sayfası, mesajlar sayfası ve ayarlar sayfası içeren bir sekme çubuğuyla karşılanır.
+
+Ana sayfada, Firebase üzerine kaydedilen kullanıcıların bilgileri listelenir. Mesajlar kısmında, mesaj almayan kullanıcılar için "Mesaj Yok" mesajı görünürken, mesaj alan kullanıcılar mesajları görebilir ve arama yapabilirler. Her iki sayfadan da mesajlara kolayca erişilebilir.
+
+Ayarlar sayfasında, çıkış işlemi yapabilir, isim, e-posta ve şifre gibi ayarları düzenleyebilirsiniz. Ayrıca, profil resminizi değiştirmek veya yeni bir resim yüklemek isterseniz, bu işlemi kolayca yapabilirsiniz.
+
+Kullanılan Teknolojiler:
+
+Firebase
+MVVM (Model-View-ViewModel)
+Message Kit
+UIKit
+
+
 <img width="373" alt="Screenshot 2023-09-19 at 16 54 08" src="https://github.com/eyuphanakkaya/UIKIT-MessageApp/assets/96181594/788cb8ab-2eb0-4478-8d16-17780b193ecb">
 <img width="373" alt="Screenshot 2023-09-19 at 16 54 17" src="https://github.com/eyuphanakkaya/UIKIT-MessageApp/assets/96181594/20fc191b-2c35-4c5c-8c81-c1dda5517c52">
 <img width="373" alt="Screenshot 2023-09-19 at 16 54 29" src="https://github.com/eyuphanakkaya/UIKIT-MessageApp/assets/96181594/bafeac3d-f490-494b-bf57-d161b0e1501a">
