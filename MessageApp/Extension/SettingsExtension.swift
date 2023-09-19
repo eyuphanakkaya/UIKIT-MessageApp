@@ -39,7 +39,6 @@ extension SettingsViewController: UIImagePickerControllerDelegate, UINavigationC
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
-        
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {//seçimi bırakırsa
         guard let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else{

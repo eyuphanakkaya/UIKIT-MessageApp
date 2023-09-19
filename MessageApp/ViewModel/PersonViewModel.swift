@@ -38,6 +38,7 @@ class PersonViewModel {
                         
                     }
                 }
+                
                 for (index, user) in self.myUsers.enumerated() {
                     // Kullanıcının bilgilerini karşılaştırın (örneğin, kullanıcı adıyla karşılaştırma yapabilirsiniz)
                     if user.email == self.loggedInUserId {
