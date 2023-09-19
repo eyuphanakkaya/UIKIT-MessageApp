@@ -15,6 +15,7 @@ class SettingsViewModel {
     var ref: DatabaseReference?
     var alert = Alerts()
     var viewControllers: UIViewController?
+
     
     init() {
         if let user = Auth.auth().currentUser {
@@ -54,6 +55,7 @@ class SettingsViewModel {
                 print("Yükleme Hatası: \(error.localizedDescription)")
             } else {
                 print("yükleme başarılı")
+                ImageCache.saveImage(image, forKey: imageName)
             }
         }
     }
@@ -86,20 +88,27 @@ class SettingsViewModel {
         guard let loginUser = loginUser else {
             return
         }
-        
-        let storageRef = Storage.storage().reference()
-        let imageRef = storageRef.child("images/\(loginUser)/resim.jpg") // Resmin yolunu belirtin
-        
-        // Resmi indirme işlemi
-        imageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
-            if let error = error {
-                print("Resim indirme hatası: \(error.localizedDescription)")
-            } else if let data = data, let image = UIImage(data: data) {
-                // Resmi görüntüleme
-                imageView.image = image
+        if let cachedImage = ImageCache.getImage(forKey: loginUser) {
+                    imageView.image = cachedImage
+        } else {
+            let storageRef = Storage.storage().reference()
+            let imageRef = storageRef.child("images/\(loginUser)/resim.jpg") // Resmin yolunu belirtin
+            
+            // Resmi indirme işlemi
+            imageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+                if let error = error {
+                    print("Resim indirme hatası: \(error.localizedDescription)")
+                } else if let data = data, let image = UIImage(data: data) {
+                    // Resmi görüntüleme
+                    imageView.image = image
+                    ImageCache.saveImage(image, forKey: loginUser)
+                }
             }
         }
+
     }
+
+
     
 }
 

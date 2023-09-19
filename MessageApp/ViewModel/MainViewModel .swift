@@ -19,6 +19,9 @@ class MainViewModel {
     var searchList = [Users]()
     var loggedInUserId: String?
     var myImageState = true
+    var cache = ImageCache()
+    
+  
     init() {
         if let user = Auth.auth().currentUser {
             loggedInUserId = user.email
@@ -27,24 +30,29 @@ class MainViewModel {
     }
     func fetchProfileImagesForReceivers(tableView: UITableView) {
         let storageRef = Storage.storage().reference()
-        
+
         for receiverEmail in myReceiver {
-            let imageRef = storageRef.child("images/\(receiverEmail)/resim.jpg")
-            imageRef.getData(maxSize: 1 * 1024 * 1024) { [weak self, receiverEmail] data, error in
-                if let error = error {
-                    self?.myImageState = false
-                    //    print("Resim indirme hatası (\(receiverEmail)): \(error.localizedDescription)")
-                } else if let data = data, let image = UIImage(data: data) {
-                    self?.myImage[receiverEmail] = image
-                    //  print("Resim başarıyla yüklendi (\(receiverEmail))")
-                    self?.myImageState = true
-                    DispatchQueue.main.async {
-                        tableView.reloadData()
+            if let cacheImage = ImageCache.getImage(forKey: receiverEmail) {
+                self.myImage[receiverEmail] = cacheImage
+            } else {
+                let imageRef = storageRef.child("images/\(receiverEmail)/resim.jpg")
+                imageRef.getData(maxSize: 1 * 1024 * 1024) { [weak self, receiverEmail] data, error in
+                    if let error = error {
+                        self?.myImageState = false
+                        print("Resim indirme hatası (\(receiverEmail)): \(error.localizedDescription)")
+                    } else if let data = data, let image = UIImage(data: data) {
+                        self?.myImage[receiverEmail] = image
+                        ImageCache.saveImage(image, forKey: receiverEmail) // Resmi yerel önbelleğe kaydedin
+                        self?.myImageState = true
+                        DispatchQueue.main.async {
+                            tableView.reloadData()
+                        }
                     }
                 }
             }
         }
     }
+    
     func fetchMessagePersons(tableView: UITableView) {
         ref?.child("Messages").observe(.value, with: { snapshot in
             var latestMessages = [String: Users]() // Kullanıcı kimliği ile son mesajları depolamak için bir sözlük
@@ -69,12 +77,13 @@ class MainViewModel {
                             if let existingMessage = latestMessages[otherUserId] {
                                 if messages.time ?? 0 > existingMessage.time ?? 0 {
                                     latestMessages[otherUserId] = messages
-                                    //                                    self.myReceiver = messages.receiver
+                                   
                                 }
                             } else {
                                 // Eğer kullanıcının henüz mesajı yoksa, ekleyin
                                 latestMessages[otherUserId] = messages
                                 self.myReceiver.append(otherUserId)
+                                
                                 
                                 
                             }
@@ -84,14 +93,14 @@ class MainViewModel {
                 
                 // Verileri çektikten sonra tabloyu güncelle
                 self.messageList = Array(latestMessages.values) // Son mesajları listeye çevirin
-                
                 // Son mesajları tarihe göre sıralayın
                 self.messageList.sort(by: { $0.time ?? 0 > $1.time ?? 0 })
-                
                 DispatchQueue.main.async {
                     tableView.reloadData()
                 }
             }
         })
     }
+
 }
+

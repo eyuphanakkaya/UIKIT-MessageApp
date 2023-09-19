@@ -16,6 +16,7 @@
 		A42765B42AB99644006C679F /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = A42765B32AB99644006C679F /* FacebookCore */; };
 		A42765B62AB99644006C679F /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = A42765B52AB99644006C679F /* FacebookLogin */; };
 		A42765B82AB99644006C679F /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = A42765B72AB99644006C679F /* FacebookShare */; };
+		A42765BA2AB9D709006C679F /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42765B92AB9D709006C679F /* Cache.swift */; };
 		A42C11CA2AAB0D59002E54BC /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C11C92AAB0D59002E54BC /* Messages.swift */; };
 		A450F05C2AA8658A0018DB9D /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A450F05B2AA8658A0018DB9D /* IntroViewController.swift */; };
 		A488D1912AA8B46400E69AF0 /* PersonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488D1902AA8B46400E69AF0 /* PersonsViewController.swift */; };
@@ -50,7 +51,6 @@
 		A4C453F52AA75EE6002A34C6 /* PagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C453F42AA75EE6002A34C6 /* PagesViewController.swift */; };
 		A4EAFC082AA9C64400CA6B00 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EAFC072AA9C64400CA6B00 /* Users.swift */; };
 		A4EAFC0B2AA9CC4D00CA6B00 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EAFC0A2AA9CC4D00CA6B00 /* Alerts.swift */; };
-		A4EAFC0D2AA9D14200CA6B00 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EAFC0C2AA9D14200CA6B00 /* MessageViewModel.swift */; };
 		A4EAFC0F2AA9E68D00CA6B00 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EAFC0E2AA9E68D00CA6B00 /* ChatViewController.swift */; };
 		A4F728B22AAB430B008A279F /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = A4F728B12AAB430B008A279F /* MessageKit */; };
 /* End PBXBuildFile section */
@@ -61,6 +61,7 @@
 		A41852752AB4615B007457DE /* PersonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewModel.swift; sourceTree = "<group>"; };
 		A41852792AB4932C007457DE /* MainViewModel .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewModel .swift"; sourceTree = "<group>"; };
 		A41ADE152AB89A4800DDC8DF /* MessageApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MessageApp.entitlements; sourceTree = "<group>"; };
+		A42765B92AB9D709006C679F /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		A42C11C92AAB0D59002E54BC /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		A450F05B2AA8658A0018DB9D /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		A488D1902AA8B46400E69AF0 /* PersonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsViewController.swift; sourceTree = "<group>"; };
@@ -91,7 +92,6 @@
 		A4C453F42AA75EE6002A34C6 /* PagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesViewController.swift; sourceTree = "<group>"; };
 		A4EAFC072AA9C64400CA6B00 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		A4EAFC0A2AA9CC4D00CA6B00 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
-		A4EAFC0C2AA9D14200CA6B00 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		A4EAFC0E2AA9E68D00CA6B00 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -187,6 +187,7 @@
 			children = (
 				A4EAFC092AA9CC3D00CA6B00 /* Alerts */,
 				A488D1982AA8B69D00E69AF0 /* Lotties */,
+				A42765B92AB9D709006C679F /* Cache.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -194,7 +195,6 @@
 		A4C453EA2AA75402002A34C6 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				A4EAFC0C2AA9D14200CA6B00 /* MessageViewModel.swift */,
 				A41852732AB45240007457DE /* SettingViewModel.swift */,
 				A41852752AB4615B007457DE /* PersonViewModel.swift */,
 				A41852792AB4932C007457DE /* MainViewModel .swift */,
@@ -368,9 +368,9 @@
 				A41852742AB45240007457DE /* SettingViewModel.swift in Sources */,
 				A40077922AAF0BE200B6FBCF /* ChatsExtension.swift in Sources */,
 				A4C453F32AA75962002A34C6 /* PageModel.swift in Sources */,
+				A42765BA2AB9D709006C679F /* Cache.swift in Sources */,
 				A4EAFC0F2AA9E68D00CA6B00 /* ChatViewController.swift in Sources */,
 				A4BA26442AA8A94E007D0005 /* ForgotViewController.swift in Sources */,
-				A4EAFC0D2AA9D14200CA6B00 /* MessageViewModel.swift in Sources */,
 				A4956E2A2AB0A03E00995E86 /* SettingsViewController.swift in Sources */,
 				A488D1972AA8B4E200E69AF0 /* PersonsTableViewCell.swift in Sources */,
 				A41852762AB4615B007457DE /* PersonViewModel.swift in Sources */,

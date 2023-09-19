@@ -27,6 +27,7 @@ class MessageViewController: UIViewController {
     var segmentedState = true
     var ref: DatabaseReference?
     var viewModel = MainViewModel()
+  
     var myImage: UIImage?
     //    var messageViewModel = MessageViewModel()
     @IBOutlet weak var searchBar: UISearchBar!
@@ -39,14 +40,15 @@ class MessageViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
-        viewModel.messageList.sort(by: { $0.receiver ?? "" < $1.receiver ?? "" })
         viewModel.fetchMessagePersons(tableView: tableView)
 
+       
         
     }
+
     override func viewDidAppear(_ animated: Bool) {
+        viewModel.fetchProfileImagesForReceivers(tableView: tableView)
         pageState()
-        
     }
     
     func pageState() {

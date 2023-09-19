@@ -26,10 +26,13 @@ class PersonsViewController: UIViewController {
         viewModel.fetchMessagePersons(tableView: tableView)
        
     }
-//    override func viewWillAppear(_ animated: Bool) {
-//      
-//        viewModel.fetchProfileImagesForReceivers(tableView: tableView)
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+       
+
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        viewModel.fetchProfileImagesForReceivers(tableView: tableView)
+    }
 
     
 

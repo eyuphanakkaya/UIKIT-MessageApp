@@ -9,7 +9,6 @@ import UIKit
 import Firebase
 
 class RegisterViewController: UIViewController {
-    var viewModel: MessageViewModel?
     var ref: DatabaseReference?
     var alert = Alerts()
     @IBOutlet weak var passwordTextField: UITextField!
