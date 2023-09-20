@@ -14,6 +14,7 @@ Firebase
 MVVM (Model-View-ViewModel)
 Message Kit
 UIKit
+Figma
 
 
 <img width="373" alt="Screenshot 2023-09-19 at 16 54 08" src="https://github.com/eyuphanakkaya/UIKIT-MessageApp/assets/96181594/788cb8ab-2eb0-4478-8d16-17780b193ecb">
